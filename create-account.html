@@ -8,95 +8,128 @@
 </head>
 <body>
   <div class="form-container">
-    <div class="form-card">
-      <h1 class="title">MigrantCare+ Registration</h1>
-      <form class="long-form" id="registrationForm">
+    <h1 class="form-title">MigrantCare+ Registration</h1>
 
-        <h2>Personal Details</h2>
-        <div class="grid">
-          <input type="text" placeholder="Full Name" required>
-          <input type="number" placeholder="Age" required>
-          <input type="date" placeholder="Date of Birth" required>
-          <select required>
-            <option value="" disabled selected>Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
+    <form id="createAccountForm" action="member-id.html" method="POST">
+      
+      <!-- Personal Details -->
+      <h2 class="section-title">Personal Details</h2>
+      <label>Full Name</label>
+      <input type="text" name="fullname" required>
 
-        <h2>Contact Details</h2>
-        <div class="grid">
-          <input type="tel" placeholder="Phone Number" required>
-          <input type="email" placeholder="Email ID" required>
-        </div>
+      <label>Age</label>
+      <input type="number" name="age" required>
 
-        <h2>Family Details</h2>
-        <div class="grid">
-          <input type="text" placeholder="Father's Name" required>
-          <input type="text" placeholder="Mother's Name" required>
-          <input type="tel" placeholder="Father's Contact No." required>
-          <input type="tel" placeholder="Mother's Contact No." required>
-          <input type="tel" placeholder="Emergency Contact No." required>
-        </div>
+      <label>Date of Birth</label>
+      <input type="date" name="dob" required>
 
-        <h2>Identity & Health</h2>
-        <div class="grid">
-          <input type="text" placeholder="Nationality" required>
-          <input type="text" placeholder="Identity Marks">
-          <input type="text" placeholder="Blood Group" required>
-          <input type="text" placeholder="Health Issues (if any)">
-          <input type="text" placeholder="Aadhar ID No." required>
-        </div>
+      <label>Gender</label>
+      <div class="radio-group">
+        <label><input type="radio" name="gender" value="Male" required> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+      </div>
 
-        <h2>Work & Insurance</h2>
-        <div class="grid">
-          <input type="text" placeholder="Type of Work" required>
-          <input type="text" placeholder="Work Permit ID" required>
-          <input type="text" placeholder="Insurance No.">
-          <div class="insurance-field">
-            <input type="date" id="insuranceValidity" placeholder="Insurance Validity Date">
-            <small id="insuranceMessage"></small>
-          </div>
-        </div>
+      <label class="section-title">Marital Status</label>
+<div class="radio-group">
+  <label>
+    <input type="radio" name="marital_status" value="married" required> Married
+  </label>
+  <label>
+    <input type="radio" name="marital_status" value="unmarried" required> Unmarried
+  </label>
+</div>
 
-        <h2>Addresses</h2>
-        <textarea placeholder="Permanent Address" required></textarea>
-        <textarea placeholder="Residential Address" required></textarea>
-        <textarea placeholder="Office Address"></textarea>
 
-        <div class="form-actions">
-          <button type="submit" class="btn primary">Submit Registration</button>
-          <button type="reset" class="btn secondary">Clear</button>
-        </div>
+      <!-- Contact Details -->
+      <h2 class="section-title">Contact Details</h2>
+      <label>Phone Number</label>
+      <input type="tel" name="phone" required>
 
-        <p class="back-link"><a href="index.html">← Back to Login</a></p>
-      </form>
-    </div>
+      <label>Email ID</label>
+      <input type="email" name="email" required>
+
+      <!-- Family Details -->
+      <h2 class="section-title">Family Details</h2>
+      <label>Father's Name</label>
+      <input type="text" name="father">
+
+      <label>Mother's Name</label>
+      <input type="text" name="mother">
+
+      <label>Father's Contact No.</label>
+      <input type="tel" name="father_phone">
+
+      <label>Mother's Contact No.</label>
+      <input type="tel" name="mother_phone">
+
+      <!-- Identity & Health -->
+      <h2 class="section-title">Identity & Health</h2>
+      <label>Nationality</label>
+      <input type="text" name="nationality">
+
+      <label>Identity Marks</label>
+      <input type="text" name="identity_marks">
+
+      <label>Blood Group</label>
+      <input type="text" name="blood_group">
+
+      <label>Health Issues (if any)</label>
+      <input type="text" name="health_issues">
+
+      <label>Aadhar ID No.</label>
+      <input type="text" name="aadhar">
+
+      <!-- Work & Insurance -->
+      <h2 class="section-title">Work & Insurance</h2>
+      <label>Type of Work</label>
+      <input type="text" name="work_type">
+
+      <label>Work Permit ID</label>
+      <input type="text" name="work_permit">
+
+      <label>Insurance No.</label>
+      <input type="text" name="insurance_no">
+
+      <label>Insurance Validity</label>
+      <input type="date" name="insurance_validity" id="insurance_validity">
+      <p id="insurance_status" class="status-text"></p>
+
+      <label>Permanent Address</label>
+      <textarea name="permanent_address"></textarea>
+
+      <label>Residential Address</label>
+      <textarea name="residential_address"></textarea>
+
+      <label>Office Address</label>
+      <textarea name="office_address"></textarea>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn primary">Submit</button>
+        <button type="reset" class="btn secondary">Clear</button>
+      </div>
+    </form>
   </div>
 
   <script>
-    // Insurance Validity Check
-    const insuranceInput = document.getElementById("insuranceValidity");
-    const insuranceMessage = document.getElementById("insuranceMessage");
+    const insuranceInput = document.getElementById("insurance_validity");
+    const statusText = document.getElementById("insurance_status");
 
-    insuranceInput.addEventListener("change", function () {
-      const selectedDate = new Date(this.value);
+    insuranceInput.addEventListener("change", () => {
+      const enteredDate = new Date(insuranceInput.value);
       const today = new Date();
-
-      if (!this.value) {
-        insuranceMessage.textContent = "";
-        return;
-      }
-
-      if (selectedDate < today) {
-        insuranceMessage.textContent = "⚠️ Insurance Expired";
-        insuranceMessage.style.color = "red";
+      if (enteredDate < today) {
+        statusText.textContent = "⚠️ Insurance Expired";
+        statusText.style.color = "red";
       } else {
-        insuranceMessage.textContent = "✔ Insurance Valid";
-        insuranceMessage.style.color = "green";
+        statusText.textContent = "✅ Insurance Valid";
+        statusText.style.color = "green";
       }
     });
   </script>
+<div class="back-link">
+  <a href="index.html">← Back to Login</a>
+</div>
 </body>
 </html>
