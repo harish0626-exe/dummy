@@ -1,0 +1,166 @@
+/* Common Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Login/Auth Card */
+.auth-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form input, .form select {
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+}
+
+.btn {
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: #2563eb;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #1d4ed8;
+}
+
+.divider {
+  margin: 1rem 0;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.btn.social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  border: 1px solid #d1d5db;
+  background: #fff;
+}
+
+.signup-link, .back-link {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.signup-link a, .back-link a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.signup-link a:hover, .back-link a:hover {
+  text-decoration: underline;
+}
+
+/* Registration Page */
+.form-container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem;
+}
+.insurance-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.insurance-field small {
+  margin-top: 4px;
+  font-size: 0.85rem;
+}
+
+
+.form-card {
+  background: #fff;
+  padding: 2rem;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.long-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.long-form h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 1rem;
+}
+
+.grid {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.long-form input, 
+.long-form select, 
+.long-form textarea {
+  padding: 0.8rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}

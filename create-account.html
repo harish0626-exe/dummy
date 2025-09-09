@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MigrantCare+ | Create Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="form-container">
+    <div class="form-card">
+      <h1 class="title">MigrantCare+ Registration</h1>
+      <form class="long-form" id="registrationForm">
+
+        <h2>Personal Details</h2>
+        <div class="grid">
+          <input type="text" placeholder="Full Name" required>
+          <input type="number" placeholder="Age" required>
+          <input type="date" placeholder="Date of Birth" required>
+          <select required>
+            <option value="" disabled selected>Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <h2>Contact Details</h2>
+        <div class="grid">
+          <input type="tel" placeholder="Phone Number" required>
+          <input type="email" placeholder="Email ID" required>
+        </div>
+
+        <h2>Family Details</h2>
+        <div class="grid">
+          <input type="text" placeholder="Father's Name" required>
+          <input type="text" placeholder="Mother's Name" required>
+          <input type="tel" placeholder="Father's Contact No." required>
+          <input type="tel" placeholder="Mother's Contact No." required>
+          <input type="tel" placeholder="Emergency Contact No." required>
+        </div>
+
+        <h2>Identity & Health</h2>
+        <div class="grid">
+          <input type="text" placeholder="Nationality" required>
+          <input type="text" placeholder="Identity Marks">
+          <input type="text" placeholder="Blood Group" required>
+          <input type="text" placeholder="Health Issues (if any)">
+          <input type="text" placeholder="Aadhar ID No." required>
+        </div>
+
+        <h2>Work & Insurance</h2>
+        <div class="grid">
+          <input type="text" placeholder="Type of Work" required>
+          <input type="text" placeholder="Work Permit ID" required>
+          <input type="text" placeholder="Insurance No.">
+          <div class="insurance-field">
+            <input type="date" id="insuranceValidity" placeholder="Insurance Validity Date">
+            <small id="insuranceMessage"></small>
+          </div>
+        </div>
+
+        <h2>Addresses</h2>
+        <textarea placeholder="Permanent Address" required></textarea>
+        <textarea placeholder="Residential Address" required></textarea>
+        <textarea placeholder="Office Address"></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Submit Registration</button>
+          <button type="reset" class="btn secondary">Clear</button>
+        </div>
+
+        <p class="back-link"><a href="index.html">← Back to Login</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Insurance Validity Check
+    const insuranceInput = document.getElementById("insuranceValidity");
+    const insuranceMessage = document.getElementById("insuranceMessage");
+
+    insuranceInput.addEventListener("change", function () {
+      const selectedDate = new Date(this.value);
+      const today = new Date();
+
+      if (!this.value) {
+        insuranceMessage.textContent = "";
+        return;
+      }
+
+      if (selectedDate < today) {
+        insuranceMessage.textContent = "⚠️ Insurance Expired";
+        insuranceMessage.style.color = "red";
+      } else {
+        insuranceMessage.textContent = "✔ Insurance Valid";
+        insuranceMessage.style.color = "green";
+      }
+    });
+  </script>
+</body>
+</html>
